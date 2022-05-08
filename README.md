@@ -39,7 +39,7 @@ C is a great language to use for game development. It is a great language to use
 - Character animation
 - Get a job!
 - Game playable on Windows, Mac, Linux
-#
+
 ## Todo
 - [X] Do initial setup
 - [X] Create README.md
