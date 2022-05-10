@@ -5,7 +5,8 @@
 - ### What is a state?
     - A state is a collection of data that is loaded and unloaded at the same time.
 - ### Needed Components - Functions, Pointers, and more
-    - [ ] Initialize game state
-    - [ ] Delete state 
+    - [X] Initialize game state
+    - [X] Delete state 
     - [ ] Update state
     - [ ] Draw state
+    - [X] Scale stack
