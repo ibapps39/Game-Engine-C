@@ -1,25 +1,28 @@
 #include <StateManager.h>
-/* State Strucutre defined as Init, Update, Draw, Destroy */
-//Function pointer to the state's functions
-typedef unsigned int (*fnPtr)();
-typedef unsigned int (*fnPtrFl)(float);
+/*
+State Manager Constructor
+Sets min. capacity, allocate memory, and sets the index to the
+top of the stack
+*/
+int STATEMANAGER_init(StateManager *statemanager) 
+{
+    statemanager-> capacity = 3;
+    statemanager-> stack = malloc(sizeof(State *) * statemanager->capacity);
+    statemanager-> top = -1;
+    return 0;
+}
 
-/* Define State: Init, Update, Draw, Destroy */
-typedef struct {
-    fnPtr init;
-    fnPtr update;
-    fnPtr draw;
-    fnPtr destroy;
-} State;
-
-/*Define State Manager: 
-a stack,
- a capacity of states, 
- and a current state as the index of the top of the stack*/
-
- typedef struct {
-     State **stack;
-     int capacity;
-     int top;
- } StateManager;
+/*
+State Manager Destructor
+Frees the memory allocated to the stack
+Until the stack is empty/at the top, it pops the top of the stack
+*/
+int STATEMANAGER_free(StateManager *statemanager) {
+    do {
+        STATEMANAGER_pop(statemanager);
+    } while (statemanager->top > -1);
+    //match the malloc in init
+    free(statemanager-> stack); 
+    return 0; 
+}
 

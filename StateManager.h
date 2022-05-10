@@ -23,7 +23,23 @@ a stack,
      int capacity;
      int top;
  } StateManager;
+
+//State Manager Constructor
 int STATEMANAGER_init(StateManager *statemanager);
+//State Manager Destructor
+int STATEMANAGER_free(StateManager *statemanager);
+//State Manager Push State
+int STATEMANAGER_push(StateManager *statemanager, State *state);
+//State Manager Pop State
+int STATEMANAGER_pop(StateManager *statemanager);
+//State Manager Update State
+int STATEMANAGER_update(StateManager *statemanager);
+//State Manager Draw State
+int STATEMANAGER_draw(StateManager *statemanager, float deltaTime);
+//Dynamically Scale State Manager
+int STATEMANAGER_scale(StateManager *statemanager);
+
+State *STATEMANAGER_getTop(StateManager *statemanager);
 
 
 #endif // STATE_MANAGER_H
