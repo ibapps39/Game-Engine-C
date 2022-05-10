@@ -25,4 +25,34 @@ int STATEMANAGER_free(StateManager *statemanager) {
     free(statemanager-> stack); 
     return 0; 
 }
+/*
+In case we reach the top of the stack and because games can have more than 3
+states, we can push more states onto the stack
+*/
+int STATEMANAGER_scale(StateManager *statemanager) {
+    statemanager->capacity *= 2;
+    statemanager->stack = realloc(statemanager->stack, sizeof (State *) * statemanager->capacity);   
+}
+/*
+Before pushing a state onto the stack, we check if the stack is full.
+If it is, we scale the stack
+Otherwise we push the state onto the stack
+*/
+int STATEMANAGER_push(StateManager *statemanager, State *state) 
+{
+    //increment the top of the stack
+    statemanager->top++;
+    //sets the state to the top of the stack
+    statemanager->stack[statemanager->top] = state;
 
+    if (statemanager->top == statemanager->capacity - 1) {
+        STATEMANAGER_scale(statemanager);
+    }
+    if (state->init != NULL) {
+        state->init();
+    }
+}
+int STATEMANAGER_pop(StateManager *statemanager) 
+{}
+int STATEMANAGER_gettop(StateManager *statemanager) 
+{}

@@ -1,5 +1,14 @@
 #ifndef STATE_MANAGER_H
 #define STATE_MANAGER_H
+
+/*
+Both stdio.h and stdlib.h are needed for the following errors:
+- identifier "NULL" is undefined
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <memory.h>
+
 /* State Strucutre defined as Init, Update, Draw, Destroy */
 //Function pointer to the state's functions
 typedef unsigned int (*fnPtr)();
