@@ -33,6 +33,10 @@ int STATEMANAGER_scale(StateManager *statemanager) {
     statemanager->capacity *= 2;
     statemanager->stack = realloc(statemanager->stack, sizeof (State *) * statemanager->capacity);   
 }
+int STATEMANAGER_gettop(StateManager *statemanager) 
+{
+    return statemanager->stack[statemanager->top];
+}
 /*
 Before pushing a state onto the stack, we check if the stack is full.
 If it is, we scale the stack
@@ -51,8 +55,20 @@ int STATEMANAGER_push(StateManager *statemanager, State *state)
     if (state->init != NULL) {
         state->init();
     }
+    return statemanager->top;
 }
 int STATEMANAGER_pop(StateManager *statemanager) 
-{}
-int STATEMANAGER_gettop(StateManager *statemanager) 
-{}
+{
+    State *top = STATEMANAGER_getTop(statemanager);
+    top->destroy();
+    statemanager->stack[statemanager->top] = NULL;
+    statemanager->top--;
+    return statemanager->top;
+    
+    if (statemanager->top == -1) {
+        return 0;
+    }
+    if (top->destroy != 0 && top->destroy != NULL) {
+        return -1;
+    }
+}
