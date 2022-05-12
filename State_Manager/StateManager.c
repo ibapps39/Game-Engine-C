@@ -1,4 +1,4 @@
-#include <StateManager.h>
+#include "StateManager.h"
 /*
 State Manager Constructor
 Sets min. capacity, allocate memory, and sets the index to the
@@ -15,7 +15,8 @@ int STATEMANAGER_init(StateManager *statemanager)
 /*
 State Manager Destructor
 Frees the memory allocated to the stack
-Until the stack is empty/at the top, it pops the top of the stack
+Until the stack is empty/at the top, it pops from the top of the stack.
+Then the stack is freed.
 */
 int STATEMANAGER_free(StateManager *statemanager) {
     do {
@@ -47,14 +48,14 @@ Otherwise we push the state onto the stack
 */
 int STATEMANAGER_push(StateManager *statemanager, State *state) 
 {
+    
+    if (statemanager->top == statemanager->capacity - 1) {
+        STATEMANAGER_scale(statemanager);
+    }
     //increment the top of the stack
     statemanager->top++;
     //sets the state to the top of the stack
     statemanager->stack[statemanager->top] = state;
-
-    if (statemanager->top == statemanager->capacity - 1) {
-        STATEMANAGER_scale(statemanager);
-    }
     if (state->init != NULL) {
         state->init();
     }
@@ -77,5 +78,22 @@ int STATEMANAGER_pop(StateManager *statemanager)
     statemanager->stack[statemanager->top] = NULL;
     statemanager->top--;
     return statemanager->top;
-    
+}
+
+int STATEMANAGER_update(StateManager *statemanager, float deltatime) 
+{
+    State *state = STATEMANAGER_getTop(statemanager);
+    if (state->update != NULL) {
+        return state->update(deltatime);
+    }
+    return 1;
+}
+
+int STATEMANAGER_draw(StateManager *statemanager, float deltatime)
+{
+    State *state = STATEMANAGER_getTop(statemanager);
+    if (state->draw != NULL) {
+        return state->draw(deltatime);
+    }
+    return 1;
 }

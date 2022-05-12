@@ -44,7 +44,7 @@ int STATEMANAGER_push(StateManager *statemanager, State *state);
 // State Manager Pop State
 int STATEMANAGER_pop(StateManager *statemanager);
 // State Manager Update State
-int STATEMANAGER_update(StateManager *statemanager);
+int STATEMANAGER_update(StateManager *statemanager, float deltaTime);
 // State Manager Draw State
 int STATEMANAGER_draw(StateManager *statemanager, float deltaTime);
 // Dynamically Scale State Manager
