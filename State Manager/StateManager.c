@@ -21,7 +21,7 @@ int STATEMANAGER_free(StateManager *statemanager) {
     do {
         STATEMANAGER_pop(statemanager);
     } while (statemanager->top > -1);
-    //match the malloc in init
+    //match the malloc with a free in init!
     free(statemanager-> stack); 
     return 0; 
 }
@@ -33,6 +33,9 @@ int STATEMANAGER_scale(StateManager *statemanager) {
     statemanager->capacity *= 2;
     statemanager->stack = realloc(statemanager->stack, sizeof (State *) * statemanager->capacity);   
 }
+/*
+Get the top of the stack
+*/
 int STATEMANAGER_gettop(StateManager *statemanager) 
 {
     return statemanager->stack[statemanager->top];
@@ -57,18 +60,22 @@ int STATEMANAGER_push(StateManager *statemanager, State *state)
     }
     return statemanager->top;
 }
+/*
+Check to see if the stack is empty based on the value of top,
+then pop by pointing the top of the stack to nothing/null, 
+and decrement the top of the stack
+*/
 int STATEMANAGER_pop(StateManager *statemanager) 
 {
     State *top = STATEMANAGER_getTop(statemanager);
-    top->destroy();
+    if (statemanager->top == -1) {
+        return 0;
+    }
+    if (top->destroy != NULL) {
+        top->destroy();
+    }
     statemanager->stack[statemanager->top] = NULL;
     statemanager->top--;
     return statemanager->top;
     
-    if (statemanager->top == -1) {
-        return 0;
-    }
-    if (top->destroy != 0 && top->destroy != NULL) {
-        return -1;
-    }
 }
