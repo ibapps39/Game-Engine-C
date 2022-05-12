@@ -43,7 +43,7 @@ C is a great language to use for game development. It is a great language to use
 ## Todo
 - [X] Do initial setup
 - [X] Create README.md
-- [ ] Create a state manager
+- [🚧] Create a state manager
 - [ ] Create a graphic init.
 - [ ] Create an entity
 
