@@ -18,8 +18,8 @@ typedef unsigned int (*fnPtrFl)(float);
 typedef struct
 {
     fnPtr init;
-    fnPtr update;
-    fnPtr draw;
+    fnPtrFl update;
+    fnPtrFl draw;
     fnPtr destroy;
 } State;
 

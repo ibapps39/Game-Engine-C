@@ -39,7 +39,7 @@ int STATEMANAGER_scale(StateManager *statemanager)
 /*
 Get the top of the stack
 */
-int STATEMANAGER_gettop(StateManager *statemanager)
+State *STATEMANAGER_getTop(StateManager *statemanager)
 {
     return statemanager->stack[statemanager->top];
 }
