@@ -8,7 +8,6 @@
 /*
 A Unit Test for the State Manager
 */
-
 unsigned int initStateA();
 unsigned int initStateB();
 unsigned int destroyStateA();
