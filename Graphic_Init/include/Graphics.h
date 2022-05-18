@@ -17,11 +17,13 @@ typedef struct {
   SDL_Window *window;
 } Graphics;
 /*
-Initializes a SDL Window and returns 0 if successful
+Initializes an SDL Window to the Graphics pointer variable 
+and returns 0 if successful. 
 */
 int GRAPHIC_init(Graphics *graphics);
 /*
-Frees allocated memory for a SDL Window
+Frees allocated memory for a SDL Window that was assigned 
+to the Graphics pointer.
 */
 void GRAPHICS_free(Graphics *graphics);
 #endif //ENGINE_GRAPHICS_H

@@ -8,6 +8,11 @@ Since graduating I have worked as a SWE for several contractors and comapnies. I
 ## What is this?
 This is my first attempt at creating my very own game engine. I am currently working on this project as a hobby and portfolio project. 
 
+## SDLC?
+As this is my first attempt at creating a game engine, I am generally taking a [Big Bang](https://sdlcpartners.com/insights/what-are-sdlc-types/#:~:text=SDLC%20Model%3A%20Big%20Bang&text=Because%20it%20does%20not%20follow,and%20working%20in%20tight%20collaboration.) approach for the project.
+- This is my first game engine, so there is still lots for me to learn and implement. Should this project gain more developers and/or be used in creating a game, the project will follow a more iterative approach. 
+- In a commerical setting where a product was/is being developed, I traditionally have used/use an Agile approach.
+
 ## What is my goal?
 I am hoping to use this project to learn more about game development and to get a better understanding of how to create a game engine and games overall. 
 

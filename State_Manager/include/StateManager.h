@@ -1,5 +1,7 @@
-#ifndef STATE_MANAGER_H
-#define STATE_MANAGER_H
+/*
+StateManager.h
+*/
+#pragma once
 
 /*
 Both stdio.h and stdlib.h are needed for the following errors:
@@ -52,4 +54,7 @@ int STATEMANAGER_scale(StateManager *statemanager);
 
 State *STATEMANAGER_getTop(StateManager *statemanager);
 
-#endif // STATE_MANAGER_H
+
+
+
+
